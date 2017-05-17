@@ -28,6 +28,10 @@ public class Transport {
     @Column(name = "latitude")
     private String latitude;
 
+    @JoinColumn(name = "route_id", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Route route;
+
     public Transport() {
     }
 
@@ -84,5 +88,13 @@ public class Transport {
 
     public void setLatitude(String latitude) {
         this.latitude = latitude;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }

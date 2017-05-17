@@ -23,6 +23,10 @@ public class Station {
     @Column(name = "latitude")
     private Double latitude;
 
+    @JoinColumn(name = "route_id", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Route route;
+
     public Station() {
     }
 
@@ -69,5 +73,13 @@ public class Station {
 
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }

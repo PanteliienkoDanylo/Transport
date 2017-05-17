@@ -1,13 +1,28 @@
 package stu.cn.ua.domain;
 
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+@Entity
+@Table(name = "transaction")
 public class Transaction {
 
+    @Id
+    @NotNull
     private Long id;
+
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
+
+    @JoinColumn(name = "transport_id", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Transport transport;
+
+    @Column(name = "date_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
 
     public Transaction() {

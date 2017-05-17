@@ -48,8 +48,8 @@ public class User {
     private Date birthday;
 
 
-    //@OneToMany(mappedBy = "user", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-    //private List<Transaction> transactions;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    private List<Transaction> transactions;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private List<Comment> comments;
@@ -80,7 +80,7 @@ public class User {
         this.role = role;
     }
 
-   /* public User(Long id, String login, String password, String email, Double balance, String firstName, String secondName, Date birthday, Role role, List<Transaction> transactions, List<Comment> comments) {
+    public User(Long id, String login, String password, String email, Double balance, String firstName, String secondName, Date birthday, Role role, List<Transaction> transactions, List<Comment> comments) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -92,7 +92,7 @@ public class User {
         this.role = role;
         this.transactions = transactions;
         this.comments = comments;
-    }*/
+    }
 
     public Long getId() {
         return id;
@@ -166,13 +166,13 @@ public class User {
         this.role = role;
     }
 
-    /*public List<Transaction> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
-    }*/
+    }
 
     public List<Comment> getComments() {
         return comments;

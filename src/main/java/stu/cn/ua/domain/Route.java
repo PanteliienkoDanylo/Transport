@@ -26,10 +26,10 @@ public class Route {
     @Column(name = "end_time")
     private Date endTime;
 
-    @OneToMany
+    @OneToMany(mappedBy = "route", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private List<Station> stations;
 
-    @OneToMany
+    @OneToMany(mappedBy = "route", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private List<Transport> transports;
 
 
