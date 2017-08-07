@@ -14,15 +14,19 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User create(User user) {
+    public User add(User user) {
         return userRepository.saveAndFlush(user);
     }
 
-    public void remove(Long id){
+    public User getById(Long id){
+        return userRepository.getOne(id);
+    }
+
+    public void delete(Long id){
         userRepository.delete(id);
     }
 
-    public void removeAll(){
+    public void deleteAll(){
         userRepository.deleteAll();
     }
 

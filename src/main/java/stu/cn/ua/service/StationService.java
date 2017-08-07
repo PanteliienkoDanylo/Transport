@@ -14,12 +14,16 @@ public class StationService {
     @Autowired
     private StationRepository stationRepository;
 
-    public Station create(Station station){
+    public Station add(Station station){
         return stationRepository.saveAndFlush(station);
     }
 
     public void delete(Long id){
         stationRepository.delete(id);
+    }
+
+    public void deleteAll(){
+        stationRepository.deleteAll();
     }
 
     public List<Station> getAll(){

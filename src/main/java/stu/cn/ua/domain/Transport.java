@@ -26,7 +26,7 @@ public class Transport {
     private Double longitude;
 
     @Column(name = "latitude")
-    private String latitude;
+    private Double latitude;
 
     @JoinColumn(name = "route_id", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -35,19 +35,28 @@ public class Transport {
     public Transport() {
     }
 
-    public Transport(String number, TransportType type, Double longitude, String latitude) {
+    public Transport(String number, TransportType type, Double longitude, Double latitude) {
         this.number = number;
         this.type = type;
         this.longitude = longitude;
         this.latitude = latitude;
     }
 
-    public Transport(Long id, String number, TransportType type, Double longitude, String latitude) {
+    public Transport(Long id, String number, TransportType type, Double longitude, Double latitude) {
         this.id = id;
         this.number = number;
         this.type = type;
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public Transport(Long id, String number, TransportType type, Double longitude, Double latitude, Route route) {
+        this.id = id;
+        this.number = number;
+        this.type = type;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.route = route;
     }
 
     public Long getId() {
@@ -82,11 +91,11 @@ public class Transport {
         this.longitude = longitude;
     }
 
-    public String getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 

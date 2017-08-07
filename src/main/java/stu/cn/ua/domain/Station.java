@@ -2,6 +2,7 @@ package stu.cn.ua.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "station")
@@ -23,9 +24,12 @@ public class Station {
     @Column(name = "latitude")
     private Double latitude;
 
-    @JoinColumn(name = "route_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Route route;
+    @ManyToMany
+    @JoinTable(name = "route_station",
+            joinColumns = @JoinColumn(name = "route_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "station_id", referencedColumnName = "id")
+    )
+    private List<Route> routes;
 
     public Station() {
     }
@@ -41,6 +45,14 @@ public class Station {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public Station(Long id, String name, Double longitude, Double latitude, List<Route> routes) {
+        this.id = id;
+        this.name = name;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.routes = routes;
     }
 
     public Long getId() {
@@ -75,11 +87,11 @@ public class Station {
         this.latitude = latitude;
     }
 
-    public Route getRoute() {
-        return route;
+    public List<Route> getRoutes() {
+        return routes;
     }
 
-    public void setRoute(Route route) {
-        this.route = route;
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
     }
 }

@@ -14,7 +14,7 @@ public class TransportService {
     @Autowired
     private TransportRepository transportRepository;
 
-    public Transport create(Transport transport) {
+    public Transport add(Transport transport) {
         return transportRepository.saveAndFlush(transport);
     }
 

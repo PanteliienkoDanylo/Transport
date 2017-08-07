@@ -19,14 +19,14 @@ public class Route {
     private String name;
 
     @NotNull
-    @Column(name = "start_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
 
     @NotNull
-    @Column(name = "end_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
 
-    @OneToMany(mappedBy = "route", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "routes", fetch = FetchType.LAZY)
     private List<Station> stations;
 
     @OneToMany(mappedBy = "route", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
@@ -34,6 +34,13 @@ public class Route {
 
 
     public Route() {
+    }
+
+    public Route(Long id, String name, Date startTime, Date endTime) {
+        this.id = id;
+        this.name = name;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public Route(String name, Date startTime, Date endTime, List<Station> stations, List<Transport> transports) {

@@ -13,15 +13,23 @@ public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
-    public Comment create(Comment comment){
+    public Comment add(Comment comment) {
         return commentRepository.saveAndFlush(comment);
     }
 
-    public void delete(Long id){
+    public Comment getById(Long id) {
+        return commentRepository.getOne(id);
+    }
+
+    public void delete(Long id) {
         commentRepository.delete(id);
     }
 
-    public List<Comment> getAll(){
+    public void deleteAll() {
+        commentRepository.deleteAll();
+    }
+
+    public List<Comment> getAll() {
         return commentRepository.findAll();
     }
 
