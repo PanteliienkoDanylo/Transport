@@ -2,6 +2,9 @@ package stu.cn.ua.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 @Entity
@@ -24,10 +27,11 @@ public class Station {
     @Column(name = "latitude")
     private Double latitude;
 
-    @ManyToMany
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "route_station",
-            joinColumns = @JoinColumn(name = "route_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "station_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "station_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "route_id", referencedColumnName = "id")
     )
     private List<Route> routes;
 

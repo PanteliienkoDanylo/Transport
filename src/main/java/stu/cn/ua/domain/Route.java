@@ -3,6 +3,7 @@ package stu.cn.ua.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class Route {
     @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
 
+    
     @ManyToMany(mappedBy = "routes", fetch = FetchType.LAZY)
     private List<Station> stations;
 

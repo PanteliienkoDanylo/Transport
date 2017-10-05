@@ -1,10 +1,10 @@
 package stu.cn.ua.domain;
 
 
-import stu.cn.ua.domain.enumeration.TransportType;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "transport")
@@ -20,7 +20,7 @@ public class Transport {
 
     @NotNull
     @Column(name = "type")
-    private TransportType type;
+    private Integer type;
 
     @Column(name = "longitude")
     private Double longitude;
@@ -28,6 +28,7 @@ public class Transport {
     @Column(name = "latitude")
     private Double latitude;
 
+    @JsonIgnore
     @JoinColumn(name = "route_id", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Route route;
@@ -35,14 +36,14 @@ public class Transport {
     public Transport() {
     }
 
-    public Transport(String number, TransportType type, Double longitude, Double latitude) {
+    public Transport(String number, Integer type, Double longitude, Double latitude) {
         this.number = number;
         this.type = type;
         this.longitude = longitude;
         this.latitude = latitude;
     }
 
-    public Transport(Long id, String number, TransportType type, Double longitude, Double latitude) {
+    public Transport(Long id, String number, Integer type, Double longitude, Double latitude) {
         this.id = id;
         this.number = number;
         this.type = type;
@@ -50,7 +51,7 @@ public class Transport {
         this.latitude = latitude;
     }
 
-    public Transport(Long id, String number, TransportType type, Double longitude, Double latitude, Route route) {
+    public Transport(Long id, String number, Integer type, Double longitude, Double latitude, Route route) {
         this.id = id;
         this.number = number;
         this.type = type;
@@ -75,11 +76,11 @@ public class Transport {
         this.number = number;
     }
 
-    public TransportType getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(TransportType type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 

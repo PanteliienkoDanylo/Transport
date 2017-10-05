@@ -33,6 +33,10 @@ public class UserService {
     public List<User> getAll(){
         return userRepository.findAll();
     }
+    
+//    public Stream<User> getAllAsStream() {
+//    	return userRepository.findAllAndStream();
+//    }
 
 
 }
