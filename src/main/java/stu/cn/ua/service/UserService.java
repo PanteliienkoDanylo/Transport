@@ -18,25 +18,21 @@ public class UserService {
         return userRepository.saveAndFlush(user);
     }
 
-    public User getById(Long id){
+    public User getById(Long id) {
         return userRepository.getOne(id);
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         userRepository.delete(id);
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         userRepository.deleteAll();
     }
 
-    public List<User> getAll(){
+    public List<User> getAll() {
         return userRepository.findAll();
     }
-    
-//    public Stream<User> getAllAsStream() {
-//    	return userRepository.findAllAndStream();
-//    }
 
 
 }

@@ -13,23 +13,23 @@ public class RouteService {
     @Autowired
     private RouteRepository routeRepository;
 
-    public Route add(Route route){
+    public Route add(Route route) {
         return routeRepository.saveAndFlush(route);
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         routeRepository.delete(id);
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         routeRepository.deleteAll();
     }
 
-    public Route getById(Long id){
+    public Route getById(Long id) {
         return routeRepository.getOne(id);
     }
 
-    public List<Route> getAll(){
+    public List<Route> getAll() {
         return routeRepository.findAll();
     }
 }

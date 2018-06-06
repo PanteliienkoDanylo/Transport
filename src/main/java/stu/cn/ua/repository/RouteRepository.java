@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import stu.cn.ua.domain.Route;
 
 @Repository
-public interface RouteRepository extends JpaRepository<Route, Long>{
-	
+public interface RouteRepository extends JpaRepository<Route, Long> {
+
 }

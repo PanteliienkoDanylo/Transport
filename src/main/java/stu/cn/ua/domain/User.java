@@ -1,6 +1,8 @@
 package stu.cn.ua.domain;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import stu.cn.ua.domain.enumeration.Role;
 
 import javax.persistence.*;
@@ -15,179 +17,64 @@ public class User {
     @Id
     @NotNull
     @Column(name = "id")
+    @Getter
+    @Setter
     private Long id;
 
     @NotNull
     @Column(name = "login")
+    @Getter
+    @Setter
     private String login;
 
     @NotNull
     @Column(name = "password")
+    @Getter
+    @Setter
     private String password;
 
     @NotNull
     @Column(name = "email")
+    @Getter
+    @Setter
     private String email;
 
     @NotNull
     @Column(name = "balance")
+    @Getter
+    @Setter
     private Double balance;
 
     @NotNull
     @Column(name = "role")
+    @Getter
+    @Setter
     private Role role;
 
     @Column(name = "firstname")
+    @Getter
+    @Setter
     private String firstName;
 
     @Column(name = "secondname")
+    @Getter
+    @Setter
     private String secondName;
 
     @Column(name = "birthday")
     @Temporal(TemporalType.DATE)
+    @Getter
+    @Setter
     private Date birthday;
 
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @Getter
+    @Setter
     private List<Transaction> transactions;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @Getter
+    @Setter
     private List<Comment> comments;
 
-    public User() {
-    }
-
-    public User(Long id, String login, String password, String email, Double balance, Role role) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.balance = balance;
-        this.role = role;
-    }
-
-    public User(String login, String password, String email, Double balance, String firstName, String secondName, Date birthday, Role role) {
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.balance = balance;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.birthday = birthday;
-        this.role = role;
-    }
-
-    public User(Long id, String login, String password, String email, Double balance, String firstName, String secondName, Date birthday, Role role) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.balance = balance;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.birthday = birthday;
-        this.role = role;
-    }
-
-    public User(Long id, String login, String password, String email, Double balance, String firstName, String secondName, Date birthday, Role role, List<Transaction> transactions, List<Comment> comments) {
-        this.id = id;
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.balance = balance;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.birthday = birthday;
-        this.role = role;
-        this.transactions = transactions;
-        this.comments = comments;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
 }

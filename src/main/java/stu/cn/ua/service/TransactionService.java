@@ -14,19 +14,19 @@ public class TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    public Transaction create(Transaction transaction){
+    public Transaction create(Transaction transaction) {
         return transactionRepository.saveAndFlush(transaction);
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         transactionRepository.delete(id);
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         transactionRepository.deleteAll();
     }
 
-    public List<Transaction> getAll(){
+    public List<Transaction> getAll() {
         return transactionRepository.findAll();
     }
 }

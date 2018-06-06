@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import stu.cn.ua.domain.Transaction;
 
 @Repository
-public interface TransactionRepository extends JpaRepository<Transaction, Long>{
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 }

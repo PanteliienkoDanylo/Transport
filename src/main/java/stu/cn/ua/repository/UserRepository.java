@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import stu.cn.ua.domain.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
-	
-	//Stream<User> findAllAndStream();
+public interface UserRepository extends JpaRepository<User, Long> {
+
 }
